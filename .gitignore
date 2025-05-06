@@ -1,0 +1,16 @@
+bin/
+obj/
+
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+*.GeneratedMSBuildEditorConfig.editorconfig
+*.AssemblyInfo.cs
+*.GlobalUsings.g.cs
+
+*.nuget.cache
+project.assets.json
+*.nuget.g.props
+*.nuget.g.targets
