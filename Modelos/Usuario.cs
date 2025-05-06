@@ -6,7 +6,7 @@ namespace AgendaCompromissoPOO.Modelos;
 
 public class Usuario
 {
-  public string NomeCompleto { get; set; }
+  public string? NomeCompleto { get; set; }
 
   private readonly List<Compromisso> _compromissos = new();
 
