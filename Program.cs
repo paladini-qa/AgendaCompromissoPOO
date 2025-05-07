@@ -111,13 +111,12 @@ else
       Participante participante = new(nomeParticipante);
       quantidadeParticipantes++;
       //participante.AdicionarCompromisso(compromisso);
-      Console.WriteLine($"\nParticipante {participante.Nome} adicionado com sucesso!");
+      Console.WriteLine($"\nParticipante {participante.Nome} adicionado com sucesso! Total de participantes: {quantidadeParticipantes}.");
     }
     catch (Exception ex)
     {
       Console.WriteLine($"\nErro: {ex.Message}");
     }
-    Console.WriteLine($"\nParticipante {nomeParticipante} adicionado ao compromisso. Total de participantes: {quantidadeParticipantes}.");
   }
   else
   {
