@@ -5,7 +5,7 @@ namespace AgendaCompromissoPOO.Modelos;
 public class Anotacao
 {
     public string TextoAnotacao { get; set; } = string.Empty;
-    public dateTime DataCriacao { get; } = DateTime.Now;
+    public DateTime DataCriacao { get; } = DateTime.Now;
 
     public Anotacao(string textoAnotacao)
     {

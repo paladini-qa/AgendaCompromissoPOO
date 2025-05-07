@@ -11,15 +11,17 @@ public class Compromisso
   private readonly List<Anotacao> _anotacoes = new();
   public IReadOnlyCollection<Anotacao> Anotacoes => _anotacoes.AsReadOnly();
 
-  public Compromisso(DateTime data, TimeSpan hora, string descricao){
+  public Compromisso(DateTime data, TimeSpan hora, string descricao)
+  {
     var dataHora = data.Date + hora;
 
-    if (dataHora <=DateTime.Now)
+    if (dataHora <= DateTime.Now)
     {
       throw new ArgumentException("A data do compromisso deve ser no futuro.");
     }
-    
-    if(string.IsNullOrWhiteSpace(descricao)){
+
+    if (string.IsNullOrWhiteSpace(descricao))
+    {
       throw new ArgumentException("A descrição do compromisso não pode ser nula.");
     }
 
@@ -41,11 +43,12 @@ public class Compromisso
 
   //Falta adicionar participante
 
-  public override string ToString(){
-    return  $"Compromisso data{Data:dd/MM/yyyy} hora {Hora:hh:mm} - {Descricao}" +
+  public override string ToString()
+  {
+    return $"Compromisso data{Data:dd/MM/yyyy} hora {Hora:hh:mm} - {Descricao}" +
             $"\nDescrição: {Descricao}" +
-            $"\nAnotações: {_anotacoes.count}";
-            //Falta implementar a ToSring do local, participantes e usuario
+            $"\nAnotações: {_anotacoes.Count}";
+    //Falta implementar a ToSring do local, participantes e usuario
   }
 
 }
