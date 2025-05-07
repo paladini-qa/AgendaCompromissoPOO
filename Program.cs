@@ -51,7 +51,6 @@ catch (Exception ex)
 
 Console.WriteLine("\nVamos cadastrar um compromisso! Por favor, siga as instruções abaixo.");
 
-// Cadastro de descrição do compromisso
 Console.WriteLine("\nDigite a descrição do compromisso:");
 string descricaoCompromisso = Console.ReadLine()!;
 while (string.IsNullOrEmpty(descricaoCompromisso))
@@ -60,7 +59,6 @@ while (string.IsNullOrEmpty(descricaoCompromisso))
   descricaoCompromisso = Console.ReadLine()!;
 }
 
-// Cadastro da data do compromisso
 Console.WriteLine("\nDigite a data do compromisso no formato 'dd/MM/yyyy':");
 string dataCompromissoStr = Console.ReadLine()!;
 DateTime dataCompromisso;
@@ -77,7 +75,6 @@ while (dataCompromisso < DateTime.Now)
 }
 bool eHoje = dataCompromisso.Date == DateTime.Now.Date;
 
-// Cadastro da hora do compromisso
 Console.WriteLine("\nDigite a hora do compromisso no formato 'HH:mm':");
 string horaCompromissoStr = Console.ReadLine()!;
 TimeSpan horaCompromisso;
@@ -96,7 +93,6 @@ while (eHoje && horaCompromisso < DateTime.Now.TimeOfDay)
   }
 }
 
-// Confirmação do local do compromisso
 Console.WriteLine("\nDigite o nome do local onde o compromisso será realizado:");
 string localCompromisso = Console.ReadLine()!;
 while (string.IsNullOrEmpty(localCompromisso))
@@ -119,7 +115,6 @@ catch (Exception ex)
   Console.WriteLine($"\nErro ao confirmar o local do compromisso: {ex.Message}");
 }
 
-// Adicionar participantes ao compromisso
 Console.WriteLine("\nDeseja adicionar participantes ao compromisso? Digite 's' para sim ou 'n' para não:");
 string resposta = Console.ReadLine()!;
 int quantidadeParticipantes = 0;
@@ -159,3 +154,5 @@ else
     Console.WriteLine("\nNenhum participante foi adicionado ao compromisso.");
   }
 }
+
+// FALTA ADICIONAR TOSTRING E IMPRIMIR O COMPROMISSO
