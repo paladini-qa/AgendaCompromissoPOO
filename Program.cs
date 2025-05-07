@@ -84,7 +84,7 @@ catch (Exception ex)
 
 Console.WriteLine("\nQuer adicionar participantes ao compromisso? (s/n)");
 string resposta = Console.ReadLine()!;
-int quantidadeParticipantes = 1;
+int quantidadeParticipantes = 0;
 if (quantidadeParticipantes >= capacidadeMaxima)
 {
   Console.WriteLine("\nErro: A quantidade de participantes excede a capacidade máxima do local.");
