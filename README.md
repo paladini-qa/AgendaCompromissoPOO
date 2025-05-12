@@ -29,3 +29,9 @@ O projeto está organizado da seguinte forma:
 2. Clone este repositório.
 3. Navegue até o diretório do projeto.
 4. Execute o comando `dotnet run` para iniciar o programa.
+
+## Parcipantes
+
+- Pablo
+- Jean Matias Kuhn
+- Vitor Paladini
