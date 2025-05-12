@@ -32,6 +32,6 @@ O projeto está organizado da seguinte forma:
 
 ## Parcipantes
 
-- Pablo
 - Jean Matias Kuhn
+- Pablo Emanuel Cechim de Lima
 - Vitor Paladini
