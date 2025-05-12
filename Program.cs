@@ -155,4 +155,35 @@ else
   }
 }
 
-// FALTA ADICIONAR TOSTRING E IMPRIMIR O COMPROMISSO
+Console.WriteLine("\nDeseja adicionar uma anotação ao compromisso? Digite 's' para sim ou 'n' para não:");
+resposta = Console.ReadLine()!;
+while (resposta.ToLower() != "s" && resposta.ToLower() != "n")
+{
+  Console.WriteLine("\nResposta inválida. Por favor, digite 's' para sim ou 'n' para não:");
+  resposta = Console.ReadLine()!;
+}
+if (resposta.ToLower() == "s")
+{
+  Console.WriteLine("\nDigite o texto da anotação:");
+  string textoAnotacao = Console.ReadLine()!;
+  while (string.IsNullOrEmpty(textoAnotacao))
+  {
+    Console.WriteLine("\nO texto da anotação não pode estar vazio. Por favor, digite novamente:");
+    textoAnotacao = Console.ReadLine()!;
+  }
+  try
+  {
+    Anotacao anotacao = new(textoAnotacao);
+    Console.WriteLine($"\nAnotação '{anotacao.TextoAnotacao}' foi adicionada com sucesso!");
+  }
+  catch (Exception ex)
+  {
+    Console.WriteLine($"\nErro ao adicionar a anotação: {ex.Message}");
+  }
+}
+else
+{
+  Console.WriteLine("\nNenhuma anotação foi adicionada ao compromisso.");
+}
+
+Console.WriteLine("\nCompromisso cadastrado com sucesso!");
