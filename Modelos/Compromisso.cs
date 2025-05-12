@@ -8,8 +8,8 @@ public class Compromisso
   public TimeSpan Hora { get; set; }
   public string Descricao { get; set; } = string.Empty;
 
-  public Usuario usuario { get; set; } = new Usuario();
-  public Local local { get; set; } = new Local();
+  public Usuario usuario { get; set; } = new Usuario("Nome Padrão");
+  public Local local { get; set; } = new Local("Local Padrão", 10);
 
   private readonly List<Participante> _participantes = new();
   public IReadOnlyCollection<Participante> Participantes => _participantes.AsReadOnly();
@@ -17,15 +17,17 @@ public class Compromisso
   private readonly List<Anotacao> _anotacoes = new();
   public IReadOnlyCollection<Anotacao> Anotacoes => _anotacoes.AsReadOnly();
 
-  public Compromisso(DateTime data, TimeSpan hora, string descricao){
+  public Compromisso(DateTime data, TimeSpan hora, string descricao)
+  {
     var dataHora = data.Date + hora;
 
-    if (dataHora <=DateTime.Now)
+    if (dataHora <= DateTime.Now)
     {
       throw new ArgumentException("A data do compromisso deve ser no futuro.");
     }
-    
-    if(string.IsNullOrWhiteSpace(descricao)){
+
+    if (string.IsNullOrWhiteSpace(descricao))
+    {
       throw new ArgumentException("A descrição do compromisso não pode ser nula.");
     }
 
@@ -37,11 +39,7 @@ public class Compromisso
     local = local ?? throw new ArgumentNullException(nameof(local), "O local não pode ser nulo.");
   }
 
-    public Compromisso()
-    {
-    }
-
-    public void AdicionarAnotacao(string textoAnotacao)
+  public void AdicionarAnotacao(string textoAnotacao)
   {
     if (string.IsNullOrWhiteSpace(textoAnotacao))
     {
@@ -62,11 +60,14 @@ public class Compromisso
 
   public override string ToString()
   {
-    return $"Compromisso data{Data:dd/MM/yyyy} hora {Hora:hh:mm} - {Descricao}" +
-            $"\nusuário: {usuario.NomeCompleto}" +
-            $"\nLocal: {local.Nome}" +
-            $"\nParticipantes: {string.Join(", ", _participantes.Select(p => p.Nome))}" +
-            $"\nAnotações: {_anotacoes.Count}";
+    var participantes = _participantes.Any() ? string.Join(", ", _participantes.Select(p => p.Nome)) : "Nenhum";
+    var anotacoes = _anotacoes.Any() ? string.Join("; ", _anotacoes.Select(a => a.TextoAnotacao)) : "Nenhuma";
+
+    return $"Compromisso dia {Data:dd/MM/yyyy} às {Hora:hh\\:mm} horas - {Descricao}" +
+            $"\nUsuário: {usuario?.NomeCompleto ?? "Não informado"}" +
+            $"\nLocal: {local?.Nome ?? "Não informado"}" +
+            $"\nParticipantes: {participantes}" +
+            $"\nAnotações: {anotacoes}";
   }
 
 }

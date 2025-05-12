@@ -12,6 +12,16 @@ public class Usuario
 
   public IReadOnlyCollection<Compromisso> Compromissos => _compromissos.AsReadOnly();
 
+  public Usuario(string nomeCompleto)
+  {
+    if (string.IsNullOrWhiteSpace(nomeCompleto))
+    {
+      throw new ArgumentException("O nome do usuário não pode estar vazio.", nameof(nomeCompleto));
+    }
+
+    NomeCompleto = nomeCompleto;
+  }
+
   public void AdicionarCompromisso(Compromisso compromisso)
   {
     if (compromisso == null)
@@ -19,7 +29,8 @@ public class Usuario
       throw new ArgumentNullException(nameof(compromisso), "O compromisso não pode ser nulo.");
     }
 
-    if (_compromissos.Any(c => c.Data == compromisso.Data))
+    // Verifica se já existe um compromisso na mesma data E na mesma hora
+    if (_compromissos.Any(c => c.Data.Date == compromisso.Data.Date && c.Hora == compromisso.Hora))
     {
       throw new InvalidOperationException("Já existe um compromisso agendado para esta data e hora.");
     }
